@@ -3,6 +3,12 @@ services:
     container_name: nginx
     image: khr136/nginx:${NGINX_VERSION}
     restart: always
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 5s
     ports:
       - "8080:80"
     networks:

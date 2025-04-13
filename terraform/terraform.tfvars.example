@@ -1,0 +1,9 @@
+ec2_instance_type      = "t2.micro"
+ssh_public_key         = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAF8ATU0CofGcz0a35zpnySNkU4Xi8Wi+beubfsy7MSJ" # Replace with your own SSH public key
+region                 = "eu-central-1"
+availability_zones     = ["eu-central-1a"]
+s3_tfstate_bucket_name = "opsentra-terraform-state" # Replace with your own S3 bucket name
+allowed_ssh_ips        = ["54.93.173.163/32"]       # Replace with your own IP address
+project_name           = "Opsentra"                 # Replace with your own project name
+environment            = "Dev"
+ec2_ami_id             = "ami-03250b0e01c28d196"

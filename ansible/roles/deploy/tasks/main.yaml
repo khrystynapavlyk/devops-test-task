@@ -1,0 +1,27 @@
+---
+- name: Create a network
+  community.docker.docker_network:
+    name: "{{ docker_network_name }}"
+    state: present
+
+- name: Create .env file from template
+  ansible.builtin.template:
+    src: env.j2
+    dest: "/home/{{ ansible_user }}/app/.env"
+    mode: "0644"
+  become: true
+  become_user: "{{ ansible_user }}"
+
+- name: Start container with Docker Compose
+  community.docker.docker_compose_v2:
+    project_src: /home/{{ ansible_user }}/app
+    state: present
+  register: output
+
+- name: Verify that nginx service is running
+  ansible.builtin.assert:
+    that:
+      - nginx.State == 'running'
+  vars:
+    nginx: >-
+      {{ output.containers | selectattr("Service", "equalto", "nginx") | first }}
