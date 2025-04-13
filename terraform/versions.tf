@@ -8,11 +8,11 @@ terraform {
     }
   }
 
-  backend "s3" {
-    bucket       = "opsentra-terraform-state-dev"
-    key          = "dev/dev.tfstate"
-    region       = "eu-central-1"
-    use_lockfile = true
-  }
+  # backend "s3" {
+  #   bucket       = "opsentra-terraform-state-dev"
+  #   key          = "dev/dev.tfstate"
+  #   region       = "eu-central-1"
+  #   use_lockfile = true
+  # }
 
 }

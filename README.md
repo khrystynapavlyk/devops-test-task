@@ -39,7 +39,7 @@ terraform plan
 So, you can run terraform apply to create resources.
 
 ```bash
-terraform apply -var-file="terraform.tfvars".
+terraform apply -var-file="terraform.tfvars"
 ```
 
 You will see the output like this:
@@ -138,3 +138,17 @@ chmod +x run.sh
 ```
 
 So, you can access the project from http://localhost:8080/ and you can see the hello page.
+
+# How to destroy infrastructure with remote backend via Terraform
+
+So, you need to comment `lines 11-16` in `versions.tf` and run terraform init again.
+
+```bash
+terraform init -migrate-state
+```
+
+After that you can run terraform destroy to destroy resources.
+
+```bash
+terraform destroy -var-file="terraform.tfvars"
+```
